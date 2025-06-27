@@ -30,7 +30,7 @@ if ingredient_list:
     #st.write(ingredient_list)
     #st.text(ingredient_list)
 
-    ingredient_string =''  
+    ingredients_string =''  
 
     for fruit_chosen in ingredient_list:
         ingredients_string += fruit_chosen + ' '
@@ -39,7 +39,7 @@ if ingredient_list:
         st.subheader(fruit_chosen + 'Nutrition information')
         fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + search_on)
         fv_dv = st.dataframe(data=fruityvice_response.json(), use_container_width = True)
-    #st.write(ingredient_string)   
+    #st.write(ingredients_string)   
 
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
             values ('""" + ingredients_string + """','""" + name_on_order + """')""" 
